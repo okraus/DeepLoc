@@ -13,7 +13,7 @@ latest source code and binaries at
 
    https://github.com/okraus/DeepLoc
 
-The commands below assume starting from the 'DeepLoc_Supplemental_Software' subdirectory.
+The commands below assume starting from the 'DeepLoc' subdirectory.
 
 
 
@@ -24,30 +24,21 @@ for training and evaluation scripts:
 
 Python 2.7+ 64-bit
    http://www.python.org/getit/
-
 CUDA 8.0+ SDK (for GPU support)
    https://developer.nvidia.com/cuda-downloads
 cuDNN 5.1 (for GPU support)
    https://developer.nvidia.com/cudnn
-
 Tensorflow v1.0+
-    https://www.tensorflow.org/install/install_linux
+     https://www.tensorflow.org/install
+    - developed on tensorflow version 0.10 (https://www.tensorflow.org/versions/r0.10/get_started/os_setup#virtualenv_installation)
+    - updated to run on version 1.0.1
 
 You can use the following command to install the dependencies (other than tensorflow):
+    pip install -r requirements.txt
 
-  pip install -r requirements.txt
-
-or if running the Anaconda Python distribution use to start an environment with the dependencies:
-
-  conda env create -f environment.yml
-
-
-Tensorflow 0.10+
-    https://www.tensorflow.org/versions/r0.10/get_started/os_setup#virtualenv_installation
-    - developed on tensorflow version 0.10
-    - briefly tested on version 0.12
-
-
+or if running the Anaconda Python distribution use to start an environment with the dependencies (recommended):
+    conda env create -f environment.yml
+    
 GETTING THE FULL DATA SETS
 --------------------------
 Due to the 150MB size limit on Supplementary Software, this package contains only
@@ -77,7 +68,8 @@ To train DeepLoc on the Chong et al. dataset run:
     python DeepLoc_train.py -logdir path/to/log-directory
     
     - the argument passed to -logdir indicates where to save the resulting models and model predictions (a good default is "./logs")
-    - by default DeepLoc will train on the limited datasets in the ./datasets directory unless the full datasets are downloaded as described above and stored in ./datasets
+    - by default DeepLoc will train on the limited datasets in the ./datasets directory unless the full datasets are 
+      downloaded as described above and stored in ./datasets
     - by default, models are saved every 500 iterations, and a test batch is evaluated every 50 iterations
 
 To evaluate the performance of different DeepLoc checkpoints run:
