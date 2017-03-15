@@ -1,0 +1,49 @@
+name: DeepLoc_TFv1.0
+channels: !!python/tuple
+- !!python/unicode
+  'conda-forge'
+- !!python/unicode
+  'defaults'
+dependencies:
+- conda-forge::ca-certificates=2017.1.23=0
+- conda-forge::certifi=2017.1.23=py27_0
+- conda-forge::ncurses=5.9=10
+- conda-forge::openssl=1.0.2h=3
+- conda-forge::pip=9.0.1=py27_0
+- conda-forge::python=2.7.12=2
+- conda-forge::readline=6.2=0
+- conda-forge::setuptools=33.1.0=py27_0
+- conda-forge::sqlite=3.13.0=1
+- conda-forge::tk=8.5.19=1
+- conda-forge::wheel=0.29.0=py27_0
+- conda-forge::zlib=1.2.11=0
+- pip:
+  - appdirs==1.4.3
+  - cycler==0.10.0
+  - dask==0.14.0
+  - decorator==4.0.11
+  - funcsigs==1.0.2
+  - functools32==3.2.3.post2
+  - h5py==2.6.0
+  - mahotas==1.4.3
+  - matplotlib==2.0.0
+  - mock==2.0.0
+  - networkx==1.11
+  - numpy==1.12.0
+  - olefile==0.44
+  - packaging==16.8
+  - pandas==0.19.2
+  - pbr==2.0.0
+  - pillow==4.0.0
+  - protobuf==3.2.0
+  - pyparsing==2.2.0
+  - python-dateutil==2.6.0
+  - pytz==2016.10
+  - scikit-image==0.12.3
+  - scipy==0.19.0
+  - six==1.10.0
+  - subprocess32==3.2.7
+#  - tensorflow-gpu==1.0.1
+  - toolz==0.8.2
+prefix: /home/okraus/anaconda2/envs/DeepLoc_TFv1.0
+
