@@ -10,20 +10,29 @@ REQUIREMENTS
 for training and evaluation scripts:
 
 Python 2.7+ 64-bit
+
     http://www.python.org/getit/
+
 CUDA 8.0+ SDK (for GPU support)
-   https://developer.nvidia.com/cuda-downloads
+
+    https://developer.nvidia.com/cuda-downloads
+    
 cuDNN 5.1 (for GPU support)
-   https://developer.nvidia.com/cudnn
+
+    https://developer.nvidia.com/cudnn
+   
 Tensorflow v1.0+
+
      https://www.tensorflow.org/install
     - developed on tensorflow version 0.10 (https://www.tensorflow.org/versions/r0.10/get_started/os_setup#virtualenv_installation)
     - updated to run on version 1.0.1
 
 You can use the following command to install the dependencies (other than tensorflow):
+
     pip install -r requirements.txt
 
 or if running the Anaconda Python distribution use to start an environment with the dependencies (recommended):
+
     conda env create -f environment.yml
     
 GETTING THE FULL DATA SETS
