@@ -9,21 +9,14 @@ REQUIREMENTS
 
 for training and evaluation scripts:
 
-Python 2.7+ 64-bit
+Python 2.7+ 64-bit: http://www.python.org/getit/
 
-    http://www.python.org/getit/
-
-CUDA 8.0+ SDK (for GPU support)
-
-    https://developer.nvidia.com/cuda-downloads
+CUDA 8.0+ SDK (for GPU support): https://developer.nvidia.com/cuda-downloads
     
-cuDNN 5.1 (for GPU support)
-
-    https://developer.nvidia.com/cudnn
+cuDNN 5.1 (for GPU support): https://developer.nvidia.com/cudnn
    
-Tensorflow v1.0+
-
-     https://www.tensorflow.org/install
+Tensorflow v1.0+: https://www.tensorflow.org/install
+     
     - developed on tensorflow version 0.10 (https://www.tensorflow.org/versions/r0.10/get_started/os_setup#virtualenv_installation)
     - updated to run on version 1.0.1
 
@@ -90,6 +83,7 @@ DEPLOYING DeepLoc TO SAMPLE IMAGE FROM ENTIRE SCREEN
 DeepLoc can be deployed to an entire automated microscopy screen using the demo in:
 
     python DeepLoc_eval_sample_image.py
+    
     - assumes model saved in './pretrained_models/model.ckpt-9500'
     - output stored as csv file in './sample_image'
 
@@ -99,6 +93,7 @@ VISUALIZING DeepLoc CLASSES AND FEATURES
 Patterns that maximally activate DeepLoc output classes can be visualized using:
 
     python DeepLoc_visualize_classes.py -loc_ckpt path/to/trained_model
+    
     - use './pretrained_models/model.ckpt-9500' as path/to/trained_model
     - output stored in './output_figures/generated_cells.png'
 
@@ -109,12 +104,14 @@ TRANSFERING DeepLoc TO wt2017 and SWAT_RFP DATASETS
 DeepLoc can be loaded and fine-tuned on the wt2017 dataset using:
 
     python DeepLoc_transfer_wt2017.py
+    
     - assumes model saved in './pretrained_models/model.ckpt-9500'
     -output stored in './logs/transfer_wt2017
 
 and fine-tuned on the SWAT_RFP dataset using:
 
     python DeepLoc_transfer_SWAT_RFP.py
+    
     - assumes model saved in './pretrained_models/model.ckpt-9500'
     -output stored in './logs/transfer_SWAT_RFP
     
