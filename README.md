@@ -74,13 +74,11 @@ TRAINING DeepLoc on Chong et al., 2015 DATA (CELL, doi:10.1016/j.cell.2015.04.05
 
 To train DeepLoc on the Chong et al. dataset run:
 
-   python DeepLoc_train.py -logdir path/to/log-directory
-
-   - the argument passed to -logdir indicates where to save the resulting models
-     and model predictions (a good default is "./logs")
-   - By default DeepLoc will train on the limited datasets in the ./datasets directory
-     unless the full datasets are downloaded as described above and stored in ./datasets
-   - By default, models are saved every 500 iterations, and a test batch is evaluated every 50 iterations
+    python DeepLoc_train.py -logdir path/to/log-directory
+    
+    - the argument passed to -logdir indicates where to save the resulting models and model predictions (a good default is "./logs")
+    - by default DeepLoc will train on the limited datasets in the ./datasets directory unless the full datasets are downloaded as described above and stored in ./datasets
+    - by default, models are saved every 500 iterations, and a test batch is evaluated every 50 iterations
 
 To evaluate the performance of different DeepLoc checkpoints run:
 
