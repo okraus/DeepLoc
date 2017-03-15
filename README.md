@@ -106,12 +106,12 @@ DeepLoc can be loaded and fine-tuned on the wt2017 dataset using:
     python DeepLoc_transfer_wt2017.py
     
     - assumes model saved in './pretrained_models/model.ckpt-9500'
-    -output stored in './logs/transfer_wt2017
+    - output stored in './logs/transfer_wt2017
 
 and fine-tuned on the SWAT_RFP dataset using:
 
     python DeepLoc_transfer_SWAT_RFP.py
     
     - assumes model saved in './pretrained_models/model.ckpt-9500'
-    -output stored in './logs/transfer_SWAT_RFP
+    - output stored in './logs/transfer_SWAT_RFP
     
