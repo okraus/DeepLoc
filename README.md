@@ -4,26 +4,13 @@ This repository contains the code, pretrained models, and datasets for the paper
 Kraus, O.Z., Grys, B.T., Ba, J., Chong, Y., Frey, B.J., Boone, C., & Andrews, B.J.
 Molecular Systems Biology
 
-DeepLoc training scripts
-=========================
-
-This source tree was distributed as part of the supplementary software 
-release for DeepLoc. Users of DeepLoc are encouraged to instead use the 
-latest source code and binaries at
-
-   https://github.com/okraus/DeepLoc
-
-The commands below assume starting from the 'DeepLoc' subdirectory.
-
-
-
 REQUIREMENTS
 ------------
 
 for training and evaluation scripts:
 
 Python 2.7+ 64-bit
-   http://www.python.org/getit/
+    http://www.python.org/getit/
 CUDA 8.0+ SDK (for GPU support)
    https://developer.nvidia.com/cuda-downloads
 cuDNN 5.1 (for GPU support)
@@ -41,23 +28,19 @@ or if running the Anaconda Python distribution use to start an environment with 
     
 GETTING THE FULL DATA SETS
 --------------------------
-Due to the 150MB size limit on Supplementary Software, this package contains only
-small subset (datasets_small) of the training and testing data, and not all scripts will run
-without the missing data.
+The datasets and pretrained models are too large to store in the repository. Please download them using instructions below.
 
 To download and unzip the datasets and pretrained model, please run:
 
-  bash download_datasets.sh
+      bash download_datasets.sh
 
 Otherwise, the datasets are available at:
-
   http://spidey.ccbr.utoronto.ca/~okraus/DeepLoc_full_datasets.zip
 
 and the pretrained model is available at:
-
   http://spidey.ccbr.utoronto.ca/~okraus/pretrained_DeepLoc.zip
 
-to download the full data sets and include them in the 'datasets' subdirectory.
+include the datasets in the 'datasets' subdirectory.
 
 
 TRAINING DeepLoc on Chong et al., 2015 DATA (CELL, doi:10.1016/j.cell.2015.04.051)
@@ -68,8 +51,7 @@ To train DeepLoc on the Chong et al. dataset run:
     python DeepLoc_train.py -logdir path/to/log-directory
     
     - the argument passed to -logdir indicates where to save the resulting models and model predictions (a good default is "./logs")
-    - by default DeepLoc will train on the limited datasets in the ./datasets directory unless the full datasets are 
-      downloaded as described above and stored in ./datasets
+    - download the datasets as described above and store them in ./datasets
     - by default, models are saved every 500 iterations, and a test batch is evaluated every 50 iterations
 
 To evaluate the performance of different DeepLoc checkpoints run:
