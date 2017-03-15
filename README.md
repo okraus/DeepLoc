@@ -4,7 +4,7 @@ This repository contains the code, pretrained models, and datasets for the paper
 Kraus, O.Z., Grys, B.T., Ba, J., Chong, Y., Frey, B.J., Boone, C., & Andrews, B.J.
 Molecular Systems Biology
 
-The commands below assume starting from the 'DeepLoc' subdirectory.
+The commands below assume starting from the 'DeepLoc' directory.
 
 REQUIREMENTS
 ------------
