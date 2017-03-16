@@ -54,17 +54,17 @@ To train DeepLoc on the Chong et al. dataset run:
 
     python DeepLoc_train.py --logdir path/to/log-directory
     
-    - the argument passed to -logdir indicates where to save the resulting models and model predictions (default is "./logs")
-    - download the datasets as described above and store them in ./datasets
+    - the argument passed to --logdir indicates where to save the resulting models and model predictions (default is './logs')
+    - download the datasets as described above and store them in './datasets'
     - by default, models are saved every 500 iterations, and a test batch is evaluated every 50 iterations
 
 To evaluate the performance of different DeepLoc checkpoints run:
 
     python DeepLoc_eval.py --logdir path/to/log-directory
 
-    - the argument to -logdir should be the same path used for training
-    - adds a python cPickle file called "test_acc_deploy_results.pkl" in the path/to/log-directory
-      including training and test performance (accuracy and test values) for the full datasets
+    - the argument to --logdir should be the same path used for training
+    - adds a python cPickle file called 'test_acc_deploy_results.pkl' including 
+      training and test performance (accuracy and test values) for the full datasets
     - default output stored in './logs'
 
 VISUALIZING DeepLoc GRAPH AND TRAINING PERFORMANCE
