@@ -165,10 +165,10 @@ def proccessCropsLoc(processedBatch,predicted_y,inputs,is_training,sess):
     return mean_crops
 
 
-if not os.path.exists('./pretrained_models/model.ckpt-9500.meta'):
+if not os.path.exists('./pretrained_models/model.ckpt-5000.meta'):
     raise NameError('please download pretrained model and extract to ./pretrained_models')
 
-locNetCkpt = './pretrained_models/model.ckpt-9500'
+locNetCkpt = './pretrained_models/model.ckpt-5000'
 
 
 def eval():

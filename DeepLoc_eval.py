@@ -47,7 +47,7 @@ checkpoint_dir = args.logdir
 
 def DeepLocModel(input_images, is_training):
 
-    conv1 = nn_layers.conv_layer(input_images, 3, 3, 2, 64, 1, 'conv_1', is_training=is_training)
+    conv1 = nn_layers.conv_layer(input_images, 3, 3, 2, 64, 1, 'conv_1',is_training=is_training)
     conv2 = nn_layers.conv_layer(conv1, 3, 3, 64, 64, 1, 'conv_2', is_training=is_training)
     pool1 = nn_layers.pool2_layer(conv2, 'pool1')
     conv3 = nn_layers.conv_layer(pool1, 3, 3, 64, 128, 1, 'conv_3', is_training=is_training)
@@ -60,8 +60,7 @@ def DeepLocModel(input_images, is_training):
     pool3 = nn_layers.pool2_layer(conv8, 'pool3')
     pool3_flat = tf.reshape(pool3, [-1, 8 * 8 * 256])
     fc_1 = nn_layers.nn_layer(pool3_flat, 8 * 8 * 256, 512, 'fc_1', act=tf.nn.relu, is_training=is_training)
-    fc_2 = nn_layers.nn_layer(fc_1, 512, 512, 'fc_2', act=tf.nn.relu, is_training=is_training)
-    #y = nn_layers.nn_layer(fc_2, 512, 19, 'final_layer', act=tf.nn.softmax, is_training=is_training)
+    fc_2 = nn_layers.nn_layer(fc_1, 512, 512, 'fc_2', act=tf.nn.relu,is_training=is_training)
     logit = nn_layers.nn_layer(fc_2, 512, 19, 'final_layer', act=None, is_training=is_training)
 
     return logit
@@ -95,6 +94,7 @@ def accuracy(predicted_y,labeled_y):
     return accuracy
 
 
+
 def loss_numpy(y_pred, y_lab):
     cross_entropy = -np.mean(y_lab * np.log(np.clip(y_pred, 1e-16, 1.0)))
     return cross_entropy
@@ -109,8 +109,6 @@ def eval( checkpoint_path):
     print('\n\n', 'evaluating', '\n\n')
     # initialize tf session
     sess = tf.Session()
-
-    global_step = tf.Variable(0, trainable=False)
 
     ######################
     # DATASET PARAMETERS #
