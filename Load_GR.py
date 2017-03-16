@@ -37,10 +37,6 @@ def load(im):
 
 # <codecell>
 
-def convert(Red):
-    #convert to nparray object
-    npArrayRed=[]
-    for RedImage in Red:
-        npArrayRed.append(np.array(RedImage.getdata()).reshape(RedImage.size[::-1]))
-    return npArrayRed
 
+def convert(images):
+    return [np.array(image) for image in images]

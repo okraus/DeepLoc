@@ -38,13 +38,21 @@ import argparse
 import os
 
 
+import argparse
 parser = argparse.ArgumentParser(description='Visualize DeepLoc model on Chong et al., 2015 data')
-parser.add_argument("-loc_ckpt",action="store",dest="loc_ckpt",help="checkpoint for localization network to use")
+parser.add_argument("-l","--logdir",action="store",dest="logdir",help="directory to save models",
+                    default='./pretrained_DeepLoc/pretrained_models/model.ckpt-5000')
+parser.add_argument("-o", "--output-folder", action="store", dest="outputdir", help="directory to store results",
+                    default='./output_figures')
 args = parser.parse_args()
-print args.loc_ckpt
+print 'log dir:',args.logdir,'out dir:',args.outputdir
 
 
-locNetCkpt = args.loc_ckpt
+locNetCkpt = args.logdir
+output_dir = args.outputdir
+
+if not os.path.exists(locNetCkpt+'.meta'):
+    raise NameError('please download pretrained model using download_datasets.sh')
 
 
 #################
@@ -167,8 +175,8 @@ curCell = buddedCells[curInd]
 
 
 
-if not os.path.exists('./output_figures'):
-    os.makedirs('./output_figures')
+if not os.path.exists(output_dir):
+    os.makedirs(output_dir)
 
 
 plt.figure(figsize=(9,35))
@@ -223,4 +231,5 @@ for localizationClass in range(len(localizationTerms[:-2]))[:]:
     plt.axis('off')
 
 #plt.tight_layout()
-plt.savefig('./output_figures/generated_cells.png')
+plt.savefig(output_dir+'/generated_cells.png')
+print 'figure saves as: ' + output_dir+'/generated_cells.png'

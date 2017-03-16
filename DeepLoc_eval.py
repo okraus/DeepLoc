@@ -39,11 +39,16 @@ import os
 import argparse
 
 parser = argparse.ArgumentParser(description='Evaluate DeepLoc model on Chong et al., 2015 data')
-parser.add_argument("-logdir", action="store", dest="logdir", help="directory to store results")
+parser.add_argument("-l","--logdir", action="store", dest="logdir", help="directory to saved models",
+                                    default='./logs')
+parser.add_argument("-o", "--output", action="store", dest="outputdir", help="directory to store results",
+                    default='./logs')
 args = parser.parse_args()
-print args.logdir
+
+print 'log dir:',args.logdir,'out dir:',args.outputdir
 
 checkpoint_dir = args.logdir
+output_dir = args.outputdir
 
 def DeepLocModel(input_images, is_training):
 
@@ -126,7 +131,7 @@ def eval( checkpoint_path):
 
     cropSize = 60
     batchSize = 128
-    stretchLow = 0.1 # stretch channels lower percentile
+    stretchLow = 0.1 # stretch chasavennels lower percentile
     stretchHigh = 99.9 # stretch channels upper percentile
 
     imSize = 64
@@ -199,7 +204,7 @@ def eval( checkpoint_path):
         results['cost']['valid'].append(np.mean(lossList['valid']))
         results['steps'].append(global_step)
 
-    with open(checkpoint_dir + '/test_acc_deploy_results.pkl', 'wb') as f:
+    with open(output_dir + '/test_acc_deploy_results.pkl', 'wb') as f:
         cPickle.dump(results, f)
 
 

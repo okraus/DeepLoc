@@ -34,9 +34,23 @@ import copy
 import cPickle
 import os
 
-PRETRAINED_PATH = './pretrained_DeepLoc/pretrained_models/model.ckpt-5000'
-if not os.path.exists(PRETRAINED_PATH+'.meta'):
-    raise NameError('please download pretrained model')
+
+import argparse
+parser = argparse.ArgumentParser(description='Transfer DeepLoc to wt2017 dataset')
+parser.add_argument("-l","--logdir",action="store",dest="logdir",help="directory to save models",
+                    default='./pretrained_DeepLoc/pretrained_models/model.ckpt-5000')
+parser.add_argument("-o", "--output-folder", action="store", dest="outputdir", help="directory to store results",
+                    default='./logs/transfer_wt2017')
+args = parser.parse_args()
+print 'log dir:',args.logdir,'out dir:',args.outputdir
+
+
+locNetCkpt = args.logdir
+output_dir = args.outputdir
+
+if not os.path.exists(locNetCkpt+'.meta'):
+    raise NameError('please download pretrained model using download_datasets.sh')
+
 
 # define new DeepLoc network
 numClasses = 22
@@ -101,8 +115,7 @@ if os.path.exists('./datasets'):
     print '\nusing full dataset\n'
     dataBaseDir = './datasets/'
 else:
-    print '\nusing small snapshot dataset\nplease download full dataset for reasonable performance\n'
-    dataBaseDir = './datasets_small/'
+    raise NameError('please download datasets using download_datasets.sh')
 
 trainSetPath = dataBaseDir+'wt2017_train_set.hdf5'
 testSetPath = dataBaseDir+'wt2017_test_set.hdf5'
@@ -199,7 +212,6 @@ starter_learning_rate = 0.003
 cross_entropy = loss_logits(logits,labels)
 train_acc = accuracy(y,labels)
 train_step = tf.train.AdamOptimizer(starter_learning_rate).minimize(cross_entropy)
-locNetCkpt = PRETRAINED_PATH
 saver = tf.train.Saver(variables2restore)
 sess = tf.Session()
 
@@ -274,9 +286,9 @@ for numberPerClass in [0,1,3,5,10,25,50,100,250,500]:
         print '\t',numberPerClass,'\t',bootstrap,'\t',testAllAcc[bootstrap]
 
 
-    if not os.path.exists('./logs/transfer_wt2017'):
-        os.makedirs('./logs/transfer_wt2017')
-    f=open('./logs/transfer_wt2017/number_training_per_class_'+str(numberPerClass)+'.pkl','wb')
+    if not os.path.exists(output_dir):
+        os.makedirs(output_dir)
+    f=open(output_dir+'/number_training_per_class_'+str(numberPerClass)+'.pkl','wb')
 
     output_dict = {'train_accs':train_accs,'test_accs':test_accs,
                    'train_costs':train_costs,'test_costs':test_costs,
@@ -285,5 +297,5 @@ for numberPerClass in [0,1,3,5,10,25,50,100,250,500]:
     f.close()
 
     saver_final = tf.train.Saver(tf.global_variables())
-    saver_final.save(sess, './logs/transfer_wt2017/number_training_per_class_'+str(numberPerClass)+'.ckpt')
-    print "results save in './logs/transfer_wt2017/number_training_per_class_'"+str(numberPerClass)
+    saver_final.save(sess, output_dir+'/number_training_per_class_'+str(numberPerClass)+'.ckpt')
+    print 'results save in: '+output_dir+'/number_training_per_class_'+str(numberPerClass)

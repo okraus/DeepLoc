@@ -38,9 +38,10 @@ SAVE_INTERVAL = 500
 
 import argparse
 parser = argparse.ArgumentParser(description='Train DeepLoc model on Chong et al., 2015 data')
-parser.add_argument("-logdir",action="store",dest="logdir",help="directory to store results")
+parser.add_argument("-l","--logdir",action="store",dest="logdir",help="directory to save models",
+                    default='./logs')
 args = parser.parse_args()
-print 'log dir',args.logdir
+print 'log dir:',args.logdir
 
 
 checkpoint_dir = args.logdir
@@ -116,8 +117,7 @@ def train():
         print '\nusing full dataset\n'
         dataBaseDir = './datasets/'
     else:
-        print '\nusing small snapshot dataset\nplease download full dataset for reasonable performance\n'
-        dataBaseDir = './datasets_small/'
+        raise NameError('please download datasets using download_datasets.sh')
 
     trainHdf5 = dataBaseDir+'Chong_train_set.hdf5'
     validHdf5 = dataBaseDir+'Chong_valid_set.hdf5'

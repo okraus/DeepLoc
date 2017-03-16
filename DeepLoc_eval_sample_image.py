@@ -34,7 +34,24 @@ import numpy as np
 import pandas as pd
 import copy
 
-PRETRAINED_PATH = './pretrained_DeepLoc/pretrained_models/model.ckpt-5000'
+
+
+import argparse
+parser = argparse.ArgumentParser(description='Evaluate sample image using DeepLoc model')
+parser.add_argument("-l","--logdir",action="store",dest="logdir",help="directory to save models",
+                    default='./pretrained_DeepLoc/pretrained_models/model.ckpt-5000')
+parser.add_argument("-o", "--output-folder", action="store", dest="outputdir", help="directory to store results",
+                    default='./sample_image')
+args = parser.parse_args()
+print 'log dir:',args.logdir,'out dir:',args.outputdir
+
+
+locNetCkpt = args.logdir
+output_dir = args.outputdir
+
+if not os.path.exists(locNetCkpt+'.meta'):
+    raise NameError('please download pretrained model')
+
 
 class screenClass:
     """
@@ -166,13 +183,6 @@ def proccessCropsLoc(processedBatch,predicted_y,inputs,is_training,sess):
     mean_crops = np.mean(crop_list, 1)
     return mean_crops
 
-
-if not os.path.exists(PRETRAINED_PATH+'.meta'):
-    raise NameError('please download pretrained model')
-
-locNetCkpt = PRETRAINED_PATH
-
-
 def eval():
 
     #####################
@@ -231,7 +241,7 @@ def eval():
 
     locCkptBasename = os.path.basename(locNetCkpt)
 
-    allPred.to_csv('./sample_image/'+locCkptBasename+'_localization_pred_v1.csv')
+    allPred.to_csv(output_dir+'/'+locCkptBasename+'_localization_pred_v1.csv')
 
     locSession.close()
 

@@ -11,7 +11,7 @@ REQUIREMENTS
 
 for training and evaluation scripts:
 
-Python 2.7+ 64-bit: http://www.python.org/getit/
+Python 2.7 64-bit: http://www.python.org/getit/
 
 CUDA 8.0+ SDK (for GPU support): https://developer.nvidia.com/cuda-downloads
     
