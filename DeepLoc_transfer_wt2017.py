@@ -34,8 +34,9 @@ import copy
 import cPickle
 import os
 
-if not os.path.exists('./pretrained_models/model.ckpt-5000.meta'):
-    raise NameError('please download pretrained model and extract to ./pretrained_models')
+PRETRAINED_PATH = './pretrained_DeepLoc/pretrained_models/model.ckpt-5000'
+if not os.path.exists(PRETRAINED_PATH+'.meta'):
+    raise NameError('please download pretrained model')
 
 # define new DeepLoc network
 numClasses = 22
@@ -198,7 +199,7 @@ starter_learning_rate = 0.003
 cross_entropy = loss_logits(logits,labels)
 train_acc = accuracy(y,labels)
 train_step = tf.train.AdamOptimizer(starter_learning_rate).minimize(cross_entropy)
-locNetCkpt = './pretrained_models/model.ckpt-5000'
+locNetCkpt = PRETRAINED_PATH
 saver = tf.train.Saver(variables2restore)
 sess = tf.Session()
 

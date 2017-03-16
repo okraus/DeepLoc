@@ -34,6 +34,8 @@ import numpy as np
 import pandas as pd
 import copy
 
+PRETRAINED_PATH = './pretrained_DeepLoc/pretrained_models/model.ckpt-5000'
+
 class screenClass:
     """
     This class manages the the background threads needed to fill
@@ -165,10 +167,10 @@ def proccessCropsLoc(processedBatch,predicted_y,inputs,is_training,sess):
     return mean_crops
 
 
-if not os.path.exists('./pretrained_models/model.ckpt-5000.meta'):
-    raise NameError('please download pretrained model and extract to ./pretrained_models')
+if not os.path.exists(PRETRAINED_PATH+'.meta'):
+    raise NameError('please download pretrained model')
 
-locNetCkpt = './pretrained_models/model.ckpt-5000'
+locNetCkpt = PRETRAINED_PATH
 
 
 def eval():
