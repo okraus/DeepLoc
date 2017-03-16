@@ -52,19 +52,20 @@ TRAINING DeepLoc on Chong et al., 2015 DATA (CELL, doi:10.1016/j.cell.2015.04.05
 
 To train DeepLoc on the Chong et al. dataset run:
 
-    python DeepLoc_train.py -logdir path/to/log-directory
+    python DeepLoc_train.py --logdir path/to/log-directory
     
-    - the argument passed to -logdir indicates where to save the resulting models and model predictions (a good default is "./logs")
+    - the argument passed to -logdir indicates where to save the resulting models and model predictions (default is "./logs")
     - download the datasets as described above and store them in ./datasets
     - by default, models are saved every 500 iterations, and a test batch is evaluated every 50 iterations
 
 To evaluate the performance of different DeepLoc checkpoints run:
 
-    python DeepLoc_eval.py -logdir path/to/log-directory
+    python DeepLoc_eval.py --logdir path/to/log-directory
 
     - the argument to -logdir should be the same path used for training
     - adds a python cPickle file called "test_acc_deploy_results.pkl" in the path/to/log-directory
       including training and test performance (accuracy and test values) for the full datasets
+    - default output stored in './logs'
 
 VISUALIZING DeepLoc GRAPH AND TRAINING PERFORMANCE
 --------------------------------------------------
@@ -86,18 +87,18 @@ DeepLoc can be deployed to an entire automated microscopy screen using the demo 
 
     python DeepLoc_eval_sample_image.py
     
-    - assumes model saved in './pretrained_models/model.ckpt-9500'
-    - output stored as csv file in './sample_image'
+    - assumes model saved in './pretrained_DeepLoc/pretrained_models/model.ckpt-5000'
+    - default output stored as csv file in './sample_image'
 
 VISUALIZING DeepLoc CLASSES AND FEATURES
 ----------------------------------------
 
 Patterns that maximally activate DeepLoc output classes can be visualized using:
 
-    python DeepLoc_visualize_classes.py -loc_ckpt path/to/trained_model
+    python DeepLoc_visualize_classes.py
     
-    - use './pretrained_models/model.ckpt-9500' as path/to/trained_model
-    - output stored in './output_figures/generated_cells.png'
+    - assumes model saved in './pretrained_DeepLoc/pretrained_models/model.ckpt-5000'
+    - default output stored in './output_figures/generated_cells.png'
 
 
 TRANSFERING DeepLoc TO wt2017 and SWAT_RFP DATASETS
@@ -107,13 +108,13 @@ DeepLoc can be loaded and fine-tuned on the wt2017 dataset using:
 
     python DeepLoc_transfer_wt2017.py
     
-    - assumes model saved in './pretrained_models/model.ckpt-9500'
-    - output stored in './logs/transfer_wt2017
+    - assumes model saved in './pretrained_DeepLoc/pretrained_models/model.ckpt-5000'
+    - default output stored in './logs/transfer_wt2017
 
 and fine-tuned on the SWAT_RFP dataset using:
 
     python DeepLoc_transfer_SWAT_RFP.py
     
-    - assumes model saved in './pretrained_models/model.ckpt-9500'
-    - output stored in './logs/transfer_SWAT_RFP
+    - assumes model saved in './pretrained_DeepLoc/pretrained_models/model.ckpt-5000'
+    - default output stored in './logs/transfer_SWAT_RFP
     
