@@ -2,7 +2,8 @@
 This repository contains the code, pretrained models, and datasets for the paper:
 "Automated analysis of high-content microscopy data with deep learning"
 Kraus, O.Z., Grys, B.T., Ba, J., Chong, Y., Frey, B.J., Boone, C., & Andrews, B.J.
-Molecular Systems Biology
+Molecular Systems Biology 13.4 (2017): 924.
+http://msb.embopress.org/content/13/4/924
 
 The commands below assume starting from the 'DeepLoc' directory.
 
